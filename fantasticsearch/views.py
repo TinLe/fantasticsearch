@@ -9,26 +9,22 @@ from fantasticsearch import fantasticsearch
 
 from elasticsearch import Elasticsearch
 
+# Load configurations
+import json
+with open('fantasticsearch/configs.json') as f:
+        config = json.load(f)
 
-#TODO: Configuration
-host = "http://localhost:9200"
-indexName = "myIndex"
-aggregationFields = ["field1", "field2"]
-
-
-es = Elasticsearch(host)
+es = Elasticsearch(config.get('host'))
 
 
 @fantasticsearch.route('/')
 def index():
 	term = "*"
-
 	results = performQuery(term, "", 0)
-	
 	return render_template('index.html', results=results, term=term, page=1)
 
 
-@fantasticsearch.route('/search')
+@fantasticsearch.route('/tinsearch')
 def search():
 	term = request.args.get('term', '')
 	filters = request.args.get('filter', '')
@@ -38,19 +34,14 @@ def search():
 		term = "*"
 
 	results = performQuery(term, filters, page)
-	
 	return render_template('index.html', results=results, filters=filters, term=term, page=page)
 
 
 def performQuery(term, filterString, page):
-
 	filters = parseFilters(filterString)
-
 	term = term.encode('utf-8')			
 	query = getBasicQuery(filters, term, page)	
-
-	result = es.search(index=indexName, body=query)
-
+	result = es.search(index=config.get('indexName'), body=query)
 	return result 
 
 
@@ -80,8 +71,8 @@ def getBasicQuery(filters, term, page):
 	filterClauses = {"and" : mustClauses }
 
 	aggregations = {}
-	for el in aggregationFields:
-		aggregations[el] = {"terms" : {"field" : el }}
+	for el in config.get('aggregationFields'):
+		aggregations[el['field']] = {"terms" : {"field" : el['field'] }}
 
 
 	if term and filters:

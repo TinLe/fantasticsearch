@@ -5,12 +5,12 @@
 {% endif %}
 
 {% if i > 1 %}
-<a class="left" href="/search?term={{term}}&level={{level}}&page={{i-1}}&filter={{filters}}">
+<a class="left" href="/tinsearch?term={{term}}&level={{level}}&page={{i-1}}&filter={{filters}}">
 	<button type="button" class="btn btn-default navbar-btn">Back</button>
 </a>
 {% endif %}
 
-<a class="right" href="/search?term={{term}}&level={{level}}&page={{i+1}}&filter={{filters}}">
+<a class="right" href="/tinsearch?term={{term}}&level={{level}}&page={{i+1}}&filter={{filters}}">
 	<button type="button" class="btn btn-default navbar-btn">Next</button>
 </a>
 

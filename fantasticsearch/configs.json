@@ -1,0 +1,8 @@
+{
+    "host" : "http://localhost:9200",
+    "indexName" : "maillog-2015.08.12",
+    "aggregationFields" : [
+      { "field":"from"},
+      { "field":"orig_to"}
+    ]
+}
