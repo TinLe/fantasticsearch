@@ -7,12 +7,12 @@ from flask import render_template
 from flask import request
 from fantasticsearch import fantasticsearch
 
-from elasticsearch import Elasticsearch
-
 # Load configurations
 import json
 with open('fantasticsearch/configs.json') as f:
         config = json.load(f)
+
+from elasticsearch import Elasticsearch
 
 es = Elasticsearch(config.get('host'))
 

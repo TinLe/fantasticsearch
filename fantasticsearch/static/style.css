@@ -6,6 +6,10 @@
  * Made By MaterializeCSS.com
  */
 
+element.style {
+      display: none;
+      transform: translateY(0px);
+}
 
 .card .card-image img {
       border-radius: 2px 2px 0 0;
