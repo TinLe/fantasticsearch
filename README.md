@@ -103,6 +103,20 @@ Usually you want the field both, intuitively searchable and "facetable", so you 
 http://www.elastic.co/guide/en/elasticsearch/reference/current/_multi_fields.html
 
 
+Proxying with Nginx
+-------------------------
+
+I use Nginx in front of this, but at a non-root URL.   Here is the nginx configuration.
+
+   location  /tinsearch {
+       proxy_set_header Host $host;
+       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+       proxy_set_header X-Scheme $scheme;
+       proxy_set_header X-Script-Name /tinsearch;
+       proxy_pass http://127.0.01:5005;
+   }
+
+
 Issues
 --------------------------
 
