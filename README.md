@@ -37,7 +37,8 @@ You need to edit 2 files accordingly to run your project.
 1. fantasticsearch/views.py:
 
 ```
-#TODO: Configuration
+# Edit fantasticsearch/configs.js
+#
 host = "http://localhost:9200"
 indexName = "myIndex"
 aggregationFields = ["field1", "field2"]
