@@ -4,27 +4,27 @@
 	<div class="row">
 	<div id="sidebar" class="col s12 m4 l3">
 
-    	<h4>from</h4>
+    	<h4>title</h4>
 	<ul class="nav nav-list">
-	    {% for bucket in results.aggregations.from.buckets %}
+	    {% for bucket in results.aggregations.title.buckets %}
 	     <li>
 		<label class="checkbox">
 		    <!-- TODO: Enter your field-name-->	
-		    <input type="checkbox" id="from-{{bucket.key}}">
-		    <label for="from-{{bucket.key}}">{{bucket.key}} ({{bucket.doc_count}})</label>
+		    <input type="checkbox" id="title-{{bucket.key}}">
+		    <label for="title-{{bucket.key}}">{{bucket.key}} ({{bucket.doc_count}})</label>
 		</label>
 	    </li>
 	   {% endfor %}
 	</ul>
 
-	<h4>orig_to</h4>
+	<h4>user</h4>
 	<ul class="nav nav-list">
-	    {% for bucket in results.aggregations.orig_to.buckets %}
+	    {% for bucket in results.aggregations.user.buckets %}
 	     <li>
 		<label class="checkbox">
 		    <!-- TODO: Enter your field-name -->	
-		    <input type="checkbox" id="orig_to-{{bucket.key}}">
-		    <label for="orig_to-{{bucket.key}}">{{bucket.key}} ({{bucket.doc_count}})</label>
+		    <input type="checkbox" id="user-{{bucket.key}}">
+		    <label for="user-{{bucket.key}}">{{bucket.key}} ({{bucket.doc_count}})</label>
 		</label>
 	    </li>
 	   {% endfor %}

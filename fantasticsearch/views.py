@@ -5,17 +5,10 @@
 import flask
 from flask import render_template
 from flask import request
-from fantasticsearch import fantasticsearch
-
-# Load configurations
-import json
-with open('fantasticsearch/configs.json') as f:
-        config = json.load(f)
+from fantasticsearch import fantasticsearch, config
 
 from elasticsearch import Elasticsearch
-
 es = Elasticsearch(config.get('host'))
-
 
 @fantasticsearch.route('/')
 def index():

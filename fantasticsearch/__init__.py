@@ -20,4 +20,10 @@ class ReverseProxied(object):
 
 fantasticsearch = Flask(__name__)
 fantasticsearch.wsgi_app = ReverseProxied(fantasticsearch.wsgi_app)
+
+# Load configurations
+import json
+with open('fantasticsearch/configs.json') as f:
+        config = json.load(f)
+
 from fantasticsearch import views

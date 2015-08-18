@@ -1,8 +1,8 @@
 {
     "host" : "http://localhost:9200",
-    "indexName" : "maillog-2015.08.12",
+    "indexName" : "kibana-int",
     "aggregationFields" : [
-      { "field":"from"},
-      { "field":"orig_to"}
+      { "field":"title"},
+      { "field":"user"}
     ]
 }
